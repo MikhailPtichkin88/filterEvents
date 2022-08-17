@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react';
+import './App.scss';
+import Header from "./components/header/Header.";
+import Events from "./components/Events";
+import Subscribe from "./components/subscribe/Subscribe";
+import Footer from "./components/footer/Footer";
+import {eventsAPI} from "./api/events-api";
+import {useAppDispatch} from "./customHooks/hooks";
+import {fetchEventsTC} from "./reducers/eventReducer/eventsReducerThunk";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const dispatch = useAppDispatch()
+    useEffect(()=>{
+       dispatch(fetchEventsTC())
+    },[])
+
+    return (
+        <div className="App">
+            <Header/>
+            <h2 className="subTitle">Our events</h2>
+            <h1 className="title">Lectures, workshops & master-classes</h1>
+            <Events/>
+            <Subscribe/>
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;

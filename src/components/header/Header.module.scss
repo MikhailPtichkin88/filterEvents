@@ -1,0 +1,61 @@
+.header{
+  padding: 20px 0 80px;
+}
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+}
+.logo{
+  margin-right: 60px;
+  width: 130px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.menu{
+  width: 430px;
+  margin-right: auto;
+}
+
+.menuList{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menuLink{
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.consultBtn{
+  width: 205px;
+  height: 50px;
+  margin-right: 35px;
+  background: linear-gradient(55.95deg, #FF3F3A 0%, #F75E05 100%);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.loginLink{
+  position: relative;
+  padding-left: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #424551;
+}
+
+.loginImg{
+  position: absolute;
+  top: calc(50% - 8px);
+  left: 0;
+}
+.active{
+  color:  #FF3F3A;
+}
