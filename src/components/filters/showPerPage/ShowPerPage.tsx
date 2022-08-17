@@ -1,11 +1,10 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import styles from './ShowPerPage.module.scss';
-import {useSelector} from "react-redux";
 import {useAppDispatch, useAppSelector} from "../../../customHooks/hooks";
 import {setEventsPerPageAC} from "../../../reducers/filterReducer/filterReducerActions";
 
 
-const ShowPerPage = () => {
+const ShowPerPage = React.memo(() => {
 
     const eventsPerPage = useAppSelector(state=>state.filters.eventsPerPage)
     const dispatch = useAppDispatch()
@@ -23,6 +22,6 @@ const ShowPerPage = () => {
             <span className={styles.descr}>events per page</span>
         </div>
     );
-};
+});
 
 export default ShowPerPage;

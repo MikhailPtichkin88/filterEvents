@@ -34,3 +34,9 @@
     text-transform: uppercase;
     color: #1E212C;
 }
+
+@media(max-width: 576px){
+    .footer{
+       display: none;
+    }
+}

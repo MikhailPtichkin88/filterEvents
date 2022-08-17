@@ -4,7 +4,7 @@ import {useAppDispatch, useAppSelector} from "../../../customHooks/hooks";
 import {setSearchTextAC} from "../../../reducers/filterReducer/filterReducerActions";
 
 
-const Search = () => {
+const Search = React.memo(() => {
 
     const [error, setError] = useState(false)
 
@@ -38,6 +38,6 @@ const inputClass = error? `${styles.input} ${styles.inputError}` : `${styles.inp
             <button className={styles.btn} type="submit"></button>
         </form>
     );
-};
+});
 
 export default Search;

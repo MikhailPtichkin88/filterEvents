@@ -4,16 +4,16 @@ import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {EventsActionType} from "./eventReducer/eventReducerTypes";
 import {filterReducer} from "./filterReducer/filterReducer";
 import {FilterActionsType} from "./filterReducer/filterReducerTypes";
+import {loadState, saveState} from "../utils/sessionStorage";
 
 const rootReducer = combineReducers({
-    events:eventsReducer,
-    filters:filterReducer,
+    events: eventsReducer,
+    filters: filterReducer,
 })
 
-export const store = createStore(rootReducer, applyMiddleware(thunk))
+export const store = createStore(rootReducer, loadState(), applyMiddleware(thunk))
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
-
 export type AppActionType = EventsActionType | FilterActionsType
 export type AppDispatch = ThunkDispatch<AppRootStateType, unknown, AppActionType>
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType,
@@ -21,6 +21,9 @@ export type AppThunk<ReturnType = void> = ThunkAction<ReturnType,
     unknown,
     AppActionType>
 
+store.subscribe(() => {
+    saveState({
+        filters:store.getState().filters
+    });
+});
 
-//@ts-ignore
-window.store= store

@@ -1,13 +1,15 @@
-.header{
+.header {
   padding: 20px 0 80px;
 }
-.wrapper{
+
+.wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 50px;
 }
-.logo{
+
+.logo {
   margin-right: 60px;
   width: 130px;
   height: 50px;
@@ -15,23 +17,24 @@
   align-items: center;
 }
 
-.menu{
+.menu {
   width: 430px;
   margin-right: auto;
 }
 
-.menuList{
+.menuList {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.menuLink{
+
+.menuLink {
   font-weight: 700;
   font-size: 16px;
   line-height: 1.6;
 }
 
-.consultBtn{
+.consultBtn {
   width: 205px;
   height: 50px;
   margin-right: 35px;
@@ -42,7 +45,7 @@
   cursor: pointer;
 }
 
-.loginLink{
+.loginLink {
   position: relative;
   padding-left: 30px;
   font-weight: 700;
@@ -51,11 +54,36 @@
   color: #424551;
 }
 
-.loginImg{
+.loginImg {
   position: absolute;
   top: calc(50% - 8px);
   left: 0;
 }
-.active{
-  color:  #FF3F3A;
+
+.active {
+  color: #FF3F3A;
+}
+
+@media(max-width: 1200px) {
+  .consultBtn {
+    display: none;
+  }
+  .loginLink {
+    display: none;
+  }
+}
+
+@media(max-width: 768px) {
+  .logo {
+    margin-right: 20px;
+  }
+}
+
+@media(max-width: 576px) {
+  .menu {
+    display: none;
+  }
+  .header {
+    padding-bottom: 40px;
+  }
 }

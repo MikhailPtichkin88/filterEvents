@@ -1,5 +1,6 @@
-import {ChangeEvent, DetailedHTMLProps, SelectHTMLAttributes, useState, MouseEvent} from "react";
+import {ChangeEvent, DetailedHTMLProps, SelectHTMLAttributes, useState, MouseEvent, memo, FC} from "react";
 import styles from './DropDown.module.scss'
+import {v1} from "uuid";
 
 type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
@@ -12,7 +13,7 @@ type SuperSelectPropsType = DefaultSelectPropsType & {
     optionsClassesArray?: string[]
 }
 
-const DropDown: React.FC<SuperSelectPropsType> = (
+const DropDown: FC<SuperSelectPropsType> = memo((
     {
         title,
         optionsClass,
@@ -24,7 +25,6 @@ const DropDown: React.FC<SuperSelectPropsType> = (
         ...restProps
     }
 ) => {
-
     const [menuList, setMenuList] = useState(false)
 
     const dropDownIconClass = menuList ? `${styles.menuIcon} ${styles.iconActive}` : `${styles.menuIcon}`
@@ -84,7 +84,7 @@ const DropDown: React.FC<SuperSelectPropsType> = (
 
                                 let optionClasses = optionsClassesArray && optionsClassesArray.find(className => className.includes(el))
 
-                                return <li key={"option" + "-" + el}
+                                return <li key={v1()}
                                            className={styles.menuItem + ` ${optionsClass} ${optionClasses}`}
                                            onClick={chooseSelect}
                                            value={el}>
@@ -98,6 +98,6 @@ const DropDown: React.FC<SuperSelectPropsType> = (
             </ul>
         </div>
     )
-}
+})
 
 export default DropDown

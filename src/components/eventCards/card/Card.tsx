@@ -3,13 +3,13 @@ import styles from '../eventCards.module.scss';
 import {EventInitStateType} from "../../../reducers/eventReducer/eventReducerTypes";
 import {useAppSelector} from "../../../customHooks/hooks";
 
-const Card = (props: EventInitStateType) => {
-    const isGrid = useAppSelector(state=>state.filters.isGrid)
+const Card = React.memo((props: EventInitStateType) => {
+    const isGrid = useAppSelector(state => state.filters.isGrid)
     const {type: category, title, date, duration} = props
     let monthArr = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-    let month = isGrid ? monthArr[+date.slice(5, 7)].slice(0,3) : monthArr[+date.slice(5, 7)]
-    let day =  date.slice(8, 10)
+    let month = isGrid ? monthArr[+date.slice(5, 7)].slice(0, 3) : monthArr[+date.slice(5, 7)]
+    let day = date.slice(8, 10)
     let startTimeHours = date.slice(11, 13)
     let startTimeMinutes = date.slice(14, 16)
     let startTimeSeconds = date.slice(17, 19)
@@ -24,8 +24,8 @@ const Card = (props: EventInitStateType) => {
     } else if (finishMinutesNum === 60) {
         finishHoursNum += 1
         finishMinutesStr = "00"
-    }else{
-        finishMinutesStr=finishMinutesNum+''
+    } else {
+        finishMinutesStr = finishMinutesNum + ''
     }
 
     return (
@@ -49,6 +49,6 @@ const Card = (props: EventInitStateType) => {
         </div>
 
     );
-};
+});
 
 export default Card;

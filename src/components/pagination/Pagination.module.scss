@@ -45,3 +45,12 @@
   opacity: 0;
   visibility: hidden;
 }
+
+@media(max-width: 576px) {
+  .wrapper{
+    flex-wrap: wrap;
+  }
+  .page{
+    font-size: 18px;
+  }
+}

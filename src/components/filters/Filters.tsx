@@ -1,29 +1,29 @@
-import React, {useState} from 'react';
+import React, {useCallback} from 'react';
 import DropDown from "./dropdown/DropDown";
 import styles from './Filters.module.scss';
 import ShowPerPage from "./showPerPage/ShowPerPage";
 import Search from "./search/Search";
 import ChangeView from "./changeView/ChangeView";
 import {useAppDispatch, useAppSelector} from "../../customHooks/hooks";
-import {useDispatch} from "react-redux";
 import {setActualThemeAC, setShowFirstAC} from "../../reducers/filterReducer/filterReducerActions";
 import {ShowFirstType} from "../../reducers/filterReducer/filterReducerTypes";
 
 
-const Filters = () => {
+const Filters = React.memo(() => {
     const themes = useAppSelector(state => state.filters.themes)
     const actualTheme = useAppSelector(state => state.filters.actualTheme)
     const dispatch = useAppDispatch()
 
     const showFirstArr = useAppSelector(state => state.filters.showFirstArr)
     const showFirst = useAppSelector(state => state.filters.showFirst)
-    const onChangeActualThemeHandler = (theme: string) => {
-        dispatch(setActualThemeAC(theme))
-    }
 
-    const onChangeShowFirstHandler = (showFirst: ShowFirstType) => {
+    const onChangeActualThemeHandler = useCallback((theme: string) => {
+        dispatch(setActualThemeAC(theme))
+    },[dispatch,actualTheme])
+
+    const onChangeShowFirstHandler = useCallback((showFirst: ShowFirstType) => {
         dispatch(setShowFirstAC(showFirst))
-    }
+    },[dispatch,showFirst])
 
 
     return (
@@ -42,6 +42,6 @@ const Filters = () => {
             <ChangeView/>
         </div>
     );
-};
+});
 
 export default Filters;

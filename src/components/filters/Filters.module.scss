@@ -4,3 +4,12 @@
   align-items: center;
   margin-bottom: 60px;
 }
+
+@media(max-width: 1200px){
+  .wrapper{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 30px;
+  }
+}
+

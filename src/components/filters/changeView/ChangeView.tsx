@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import sprite from '../../../assets/images/changeViewSprite.svg';
 import styles from './ChangeView.module.scss'
 import {useAppDispatch, useAppSelector} from "../../../customHooks/hooks";
 import {setIsGridAC} from "../../../reducers/filterReducer/filterReducerActions";
-import {FilterInitStateType} from "../../../reducers/filterReducer/filterReducerTypes";
-import {AppRootStateType} from "../../../reducers/store";
 
 
-const ChangeView = () => {
+const ChangeView = React.memo(() => {
 
     const isGrid = useAppSelector(state => state.filters.isGrid)
     const dispatch = useAppDispatch()
@@ -36,6 +34,6 @@ const ChangeView = () => {
             </button>
         </div>
     );
-};
+});
 
 export default ChangeView;
