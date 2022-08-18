@@ -4,7 +4,7 @@ import {v1} from "uuid";
 
 type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
-type SuperSelectPropsType = DefaultSelectPropsType & {
+type CustomSelectPropsType = DefaultSelectPropsType & {
     title: string
     options?: any[]
     onChangeOption?: (option: any) => void
@@ -13,7 +13,7 @@ type SuperSelectPropsType = DefaultSelectPropsType & {
     optionsClassesArray?: string[]
 }
 
-const DropDown: FC<SuperSelectPropsType> = memo((
+const DropDown: FC<CustomSelectPropsType> = memo((
     {
         title,
         optionsClass,

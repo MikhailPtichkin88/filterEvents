@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import './App.scss';
-import Header from "./components/header/Header.";
+import Header from "./components/header/Header";
 import Events from "./components/Events";
 import Subscribe from "./components/subscribe/Subscribe";
 import Footer from "./components/footer/Footer";
 import {eventsAPI} from "./api/events-api";
-import {useAppDispatch} from "./customHooks/hooks";
+import {useAppDispatch} from "./customHooks/useAppDispatch";
 import {fetchEventsTC} from "./reducers/eventReducer/eventsReducerThunk";
 
 

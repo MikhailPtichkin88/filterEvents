@@ -10,19 +10,19 @@ export const filterInitState = {
     searchText:''
 }
 
-export const filterReducer = (state:FilterInitStateType = filterInitState, action:FilterActionsType)=>{
+export const filterReducer = (state:FilterInitStateType = filterInitState, action:FilterActionsType):FilterInitStateType=>{
     switch(action.type){
-        case "SET-IS-GRID":
+        case "FILTER/SET-IS-GRID":
             return {...state, isGrid: action.payload.isGrid}
-        case "SET-THEMES":
+        case "FILTER/SET-THEMES":
             return {...state, themes: [...state.themes, ...action.payload.themes]}
-        case "SET-ACTUAL-THEME":
+        case "FILTER/SET-ACTUAL-THEME":
             return {...state, actualTheme: action.payload.theme}
-        case "SET-SHOW-FIRST":
+        case "FILTER/SET-SHOW-FIRST":
             return {...state, showFirst:action.payload.showFirst}
-        case "SET-EVENTS-PER-PAGE":
+        case "FILTER/SET-EVENTS-PER-PAGE":
             return {...state, eventsPerPage:action.payload.events }
-        case "SET-SEARCH-TEXT":
+        case "FILTER/SET-SEARCH-TEXT":
             return {...state, searchText:action.payload.text}
         default:
             return state

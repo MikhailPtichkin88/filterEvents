@@ -1,8 +1,9 @@
 import React from 'react';
 import sprite from '../../../assets/images/changeViewSprite.svg';
 import styles from './ChangeView.module.scss'
-import {useAppDispatch, useAppSelector} from "../../../customHooks/hooks";
+import {useAppDispatch} from "../../../customHooks/useAppDispatch";
 import {setIsGridAC} from "../../../reducers/filterReducer/filterReducerActions";
+import {useAppSelector} from "../../../customHooks/useAppSelector";
 
 
 const ChangeView = React.memo(() => {

@@ -19,7 +19,6 @@ const Pagination = (props: PaginationPropsType) => {
     }
 
     const prevBtnClasses = page === 1 ? `${styles.btn} ${styles.prevBtn} ${styles.hide}` : `${styles.btn} ${styles.prevBtn}`
-
     const nextBtnClasses = page === totalPages ? `${styles.btn} ${styles.hide}` : `${styles.btn}`
 
     return (
@@ -31,8 +30,7 @@ const Pagination = (props: PaginationPropsType) => {
                     return <button
                         onClick={() => setPage(el + 1)}
                         key={el}
-                        className={`${styles.page} ${page === el + 1 ? `${styles.activePage}` : ""}`}
-                    >
+                        className={`${styles.page} ${page === el + 1 ? `${styles.activePage}` : ""}`}>
                         {el + 1}
                     </button>
                 })

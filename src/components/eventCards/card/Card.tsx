@@ -1,32 +1,20 @@
 import React from 'react';
 import styles from '../eventCards.module.scss';
 import {EventInitStateType} from "../../../reducers/eventReducer/eventReducerTypes";
-import {useAppSelector} from "../../../customHooks/hooks";
+import {useAppSelector} from "../../../customHooks/useAppSelector";
 
 const Card = React.memo((props: EventInitStateType) => {
     const isGrid = useAppSelector(state => state.filters.isGrid)
     const {type: category, title, date, duration} = props
-    let monthArr = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    const monthArr = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-    let month = isGrid ? monthArr[+date.slice(5, 7)].slice(0, 3) : monthArr[+date.slice(5, 7)]
-    let day = date.slice(8, 10)
-    let startTimeHours = date.slice(11, 13)
-    let startTimeMinutes = date.slice(14, 16)
-    let startTimeSeconds = date.slice(17, 19)
-    let finishTimeSeconds = ((+startTimeHours * 3600) + (+startTimeMinutes * 60) + +startTimeSeconds) + (Math.round(duration / 1000))
-    let finishHoursNum = Math.floor(finishTimeSeconds / 3600)
-    let finishHoursStr = finishHoursNum < 10 ? `0${finishHoursNum}` : `${finishHoursNum}`
-    let finishMinutesNum = Math.ceil((finishTimeSeconds - (finishHoursNum * 3600)) / 60)
-    let finishMinutesStr
+    const month = isGrid ? monthArr[+date.slice(5, 7)].slice(0, 3) : monthArr[+date.slice(5, 7)]
+    const day = date.slice(8, 10)
 
-    if (finishMinutesNum < 10) {
-        finishMinutesStr = `0${finishMinutesNum}`
-    } else if (finishMinutesNum === 60) {
-        finishHoursNum += 1
-        finishMinutesStr = "00"
-    } else {
-        finishMinutesStr = finishMinutesNum + ''
-    }
+    const startHours = `${new Date(date).getHours() < 10 ? "0" + new Date(date).getHours() : new Date(date).getHours()}`
+    const startMinutes = `${new Date(date).getMinutes() < 10 ? "0" + new Date(date).getMinutes() : new Date(date).getMinutes()}`
+    const finishHours = `${new Date(Date.parse(date) + (duration)).getHours() < 10 ? "0" + (new Date(Date.parse(date) + (duration)).getHours()) : new Date(Date.parse(date) + (duration)).getHours()}`
+    const finishMinutes = `${new Date(Date.parse(date) + (duration)).getMinutes() < 10 ? "0" + Math.ceil(new Date(Date.parse(date) + (duration)).getMinutes()) : Math.ceil(new Date(Date.parse(date) + (duration)).getMinutes())}`
 
     return (
 
@@ -36,7 +24,7 @@ const Card = React.memo((props: EventInitStateType) => {
                 <div className={styles.monthTimeBlock}>
                     <span className={styles.month}>{month}</span>
                     <span className={styles.time}>
-                        {startTimeHours}:{startTimeMinutes} – {finishHoursStr}:{finishMinutesStr}</span>
+                        {`${startHours}:${startMinutes} - ${finishHours}:${finishMinutes}`}</span>
                 </div>
             </div>
             <div className={styles.infoBlock}>

@@ -1,7 +1,8 @@
 import React, {ChangeEvent, FormEvent, useState} from 'react';
 import styles from './Search.module.scss';
-import {useAppDispatch, useAppSelector} from "../../../customHooks/hooks";
+import {useAppDispatch} from "../../../customHooks/useAppDispatch";
 import {setSearchTextAC} from "../../../reducers/filterReducer/filterReducerActions";
+import {useAppSelector} from "../../../customHooks/useAppSelector";
 
 
 const Search = React.memo(() => {

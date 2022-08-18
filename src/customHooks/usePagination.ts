@@ -1,11 +1,4 @@
-import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux'
-import type {AppRootStateType, AppDispatch} from '../reducers/store'
 import {useState} from "react";
-
-
-export const useAppDispatch: () => AppDispatch = useDispatch
-export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
-
 
 interface UsePaginationProps {
     contentPerPage: number,
@@ -23,7 +16,6 @@ interface UsePaginationReturn {
 }
 
 type UsePagination = ({}: UsePaginationProps) => (UsePaginationReturn);
-
 export const usePagination: UsePagination = ({contentPerPage, count}) => {
     const [page, setPage] = useState(1);
 

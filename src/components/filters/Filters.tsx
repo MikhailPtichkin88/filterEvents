@@ -4,9 +4,10 @@ import styles from './Filters.module.scss';
 import ShowPerPage from "./showPerPage/ShowPerPage";
 import Search from "./search/Search";
 import ChangeView from "./changeView/ChangeView";
-import {useAppDispatch, useAppSelector} from "../../customHooks/hooks";
+import {useAppDispatch} from "../../customHooks/useAppDispatch";
 import {setActualThemeAC, setShowFirstAC} from "../../reducers/filterReducer/filterReducerActions";
 import {ShowFirstType} from "../../reducers/filterReducer/filterReducerTypes";
+import {useAppSelector} from "../../customHooks/useAppSelector";
 
 
 const Filters = React.memo(() => {

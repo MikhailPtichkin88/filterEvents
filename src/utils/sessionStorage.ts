@@ -2,7 +2,7 @@ import {FilterInitStateType} from "../reducers/filterReducer/filterReducerTypes"
 
 export const loadState = () => {
     try {
-        const serializedState = localStorage.getItem('filters');
+        const serializedState = sessionStorage.getItem('filters');
         if (serializedState === null) {
             return undefined;
         }
@@ -15,7 +15,7 @@ export const loadState = () => {
 export const saveState = (state:{filters:FilterInitStateType}) => {
     try {
         const serializedState = JSON.stringify(state);
-        localStorage.setItem('filters', serializedState);
+        sessionStorage.setItem('filters', serializedState);
     } catch {
        console.warn("Error occurred")
     }

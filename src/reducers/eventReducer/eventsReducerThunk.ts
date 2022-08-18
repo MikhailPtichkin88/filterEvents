@@ -13,7 +13,5 @@ export const fetchEventsTC=():AppThunk=>{
             .catch(err=>{
                 console.warn(err)
             })
-
-
     }
 }
